@@ -1,4 +1,4 @@
-# Security
+# Security and File Permission
 #### Managin Users
 ```
 user add [option]
@@ -12,4 +12,8 @@ user add [option]
 #### cron
 ```
 * * * * * [command]
+```
+#### usermod
+```
+usermod go-w example.txt
 ```
