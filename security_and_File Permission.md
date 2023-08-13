@@ -17,3 +17,8 @@ user add [option]
 ```
 usermod go-w example.txt
 ```
+#### ssh-keygen
+- ssh-keygen rsa로 키를 생성하면 ~/.ssh 디렉토리에 private키와 public키가 생성됨
+- public key : ~/.ssh/id_rsa.pub
+- private key : ~/.ssh/id_rsa
+- `ssh-copy-id`로 public key가 대상 서버의 `~/.ssh/authorized_keys`로 복사됨
