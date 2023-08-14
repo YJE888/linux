@@ -49,3 +49,14 @@ brw-rw---- 1 root disk      8,   2 Aug  7 22:13 sda2
 |Option|RW, RO...|
 |Dump|0=무시, 1=백업|
 |Pass|0=무시, 1 or 2 = fsck filesystem 체크|
+
+### DAS, NAS, SAN
+- DAS(Direct Attached Storage)
+  - 컴퓨터 또는 서버에 직접 연결되는 스토리지 장치로 하드디스크, SSD등이 컴퓨터의 내부 또는 외부에 연결되어 사용되는 것을 의미
+- NAS(Network Attached Storage)=NFS와 비슷
+  - 네트워크를 통해 접근 가능한 스토리지 시스템
+  - 네트워크에 연결된 디바이스나 서버에 부착된 스토리지로, 파일 공유와 데이터 관리를 위해 사용됨
+  - 여러 사용자가 동시에 NAS에 접근하여 파일을 공유하고 관리
+- SAN(Storage Area Network)
+  - 스토리지를 위한 전용 네트워크를 구축하는 기술로, 여러 서버에서 공유하는 중앙 스토리지를 지원함
+  - 블록기반 스토리지로서, 서버와 스토리지 간의 고속 연결을 제공
