@@ -39,7 +39,7 @@ $ crontab -e
 # 분 시 일 월 요일
 0 6 1 * * /usr/local/bin/last-reboot.sh
 ```
-- /usr/local/bin/system-debugger.sh을 0분과 30분에(30분마다) 실행되게끔 설정
+- /usr/local/bin/system-debugger.sh을 0분과 30분에(30분마다) 실행되게끔 설정   
   (ex) 09:00, 09:30, 10:00, 10:30...
 ```
 # 방법 1)
