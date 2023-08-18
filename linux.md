@@ -56,3 +56,25 @@
   # 방법 2)
   */30 * * * * /usr/local/bin/system-debugger.sh
   ```
+### grep
+- `-r` : 특정 디렉터리 내에서 모든 파일을 확인
+- `DATABASES = {` 이 포함된 파일을 `/opt`에서 하위 디렉터리까지 모두 찾기
+  ```
+  $ cd /opt
+  $ grep -ir "DATABASES = {"
+    mercuryProject/mercury/settings.py:DATABASES = {
+  ```
+### systemd
+```
+[Unit]
+Description=mercury service
+
+[Service]
+ExecStart=/usr/bin/python3 manage.py runserver 0.0.0.0:8000
+WorkingDirectory=/opt/caleston-code/mercuryProject/
+User=mercury
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
