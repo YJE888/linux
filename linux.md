@@ -78,3 +78,17 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+### PID
+- Terminate gracefully
+  ```
+  kill PID
+  kill -SIGTERM PID
+  kill -TERM PID
+  kill -15 PID
+  ```
+- Terminate forcibly
+  ```
+  kill -9 PID
+  kill -KILL PID
+  kill -SIGKILL PID
+  ```
