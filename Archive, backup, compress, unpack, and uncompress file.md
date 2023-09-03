@@ -7,7 +7,6 @@
   = $ tar -tf archive.tar
   = $ tar tf archive.tar
   ```
-&npsp;
 - 파일과 디렉터리 아카이빙(/w tar)
   ```
   # --create = -c --file = -f
@@ -80,4 +79,20 @@ archive.tar.gz
 $ tar --create --gzip --file archive.tar.gz file1 = $ tar czf archive.tar.gz file1
 $ tar --create --bzip2 --file archive.tar.bz2 file1 = $ tar cjf archive.tar.bz2 file1
 $ tar --create --xz --file archive.tar.xz file1 = $ tar cJf archive.tar.xz file1
+```
+### 절대경로 포함해서 압축
+```
+$ sudo tar cf logs.tar /var/log/
+tar: Removing leading `/' from member names
+# 위와 같은 에러가 발생하는 경우 절대경로 정보를 유지하도록 -P 옵션 추가
+$ sudo tar cfP logs.tar /var/log/
+```
+### tar로 아카이브 후 압축
+```
+# c : 새 아카이브 생성
+# z : gzip 압축 생성
+# f : 아카이브 파일 이름 지정
+# P : 절대 경로를 유지해서 아카이브
+$ sudo tar czfP logs.tar.gz /var/log/
+
 ```
