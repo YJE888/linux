@@ -70,3 +70,7 @@ $ systemctl edit --full sshd
   ```
   $ systemctl list-units --type service --all
   ```
+### 서비스 생성
+```
+$ vi /usr/local/bin/myapp.sh
+```
