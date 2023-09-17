@@ -7,6 +7,11 @@
   ip link set dev eth0 up
   ```
 #### default route 설정
+- `/proc/sys/net/ipv4/ip_forward`
+  - 1로 설정하면 리눅스 서버에서 IP 패킷 전달이 활성화되고, 서버가 두 개의 인터페이스 (예: eth0 및 eth1)를 가지고 있는 경우 패킷을 다른 네트워크로 전달할 수 있음
+  - 0 : 비활성화
+  - 1 : 활성화
+    
   ```
   $ route -n
   Kernel IP routing table
