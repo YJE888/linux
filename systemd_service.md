@@ -1,4 +1,7 @@
 # systemctl and journalctl
+### 서비스 유닛 파일의 경로
+- 시스템 서비스 : `/lib/systemd/system/`
+- 사용자 정의 서비스 : `/etc/systemd/system/`
 #### systemd
 - `systemd`를 사용하여 서비스를 등록하면 해당 서비스를 효율적으로 관리 가능(로그 확인 등)
 #### journalctl
@@ -73,4 +76,39 @@ $ systemctl edit --full sshd
 ### 서비스 생성
 ```
 $ vi /usr/local/bin/myapp.sh
+#!/bin/bash
+echo "MyApp Started" | systemd-cat -t MyApp -p info
+sleep 5
+echo "MyApp Crashed" | systemd-cat -t MyApp -p err
 ```
+### systemd myapp 생성
+```
+$ vi /etc/systemd/system/myapp.service
+[Unit]
+Description=My Application
+After=network.target auditd.service
+
+[Service]
+ExecStartPre=echo "Systemd is preparing to start MyApp"
+ExecStart=/usr/local/bin/myapp.sh
+KillMode=process
+Restart=always
+RestartSec=1
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+```
+- Unit : systemd의 기본 구성 요소로, 서비스, 타이머, 마운트 등 다양한 시스템 관련 개체를 나타냄
+- Service: 서비스가 시작될 때 실행되는 명령, 환경 변수, 의존성, 리소스 제한 등 서비스 실행과 관련된 정보 포함
+  - `Restart=on-failure`
+    - 서비스가 실패한 경우(종료 코드가 0일때)에만 다시 시작하도록 지정 > 서비스가 성공적으로 종료되면 다시 시작하지 않음
+  - `Restart=always`
+    - 서비스가 종료될 때마다 항상 다시 시작 > 성공 또는 실패와 무관하게 항상 다시 시작
+  - `KillMode=process`
+    - 서비스 유닛이 종료될 때 프로세스를 어떻게 종료할지 지정
+    - process : 메인 프로세스만을 종료하도록 지정 > 메인 프로세스가 종료되면 해당 서비스와 관련된 모든 자식 프로세스도 함께 종료됨
+    - control-group : 프로세스 그룹을 기반으로 서비스와 관련된 모든 프로세스를 종료하는 것
+  - `Type=simple`
+- Install : 설치 경로, 원하는 타켓(runlevel 또는 타임라인), 의존성 관계등을 설정하거나 시스템 부팅 및 종료 시에 서비스를 활성화 또는 비활성화할 때 사용
+  
